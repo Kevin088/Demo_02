@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //form表单 文件上传
     public void uploadImag(){
-        final String url = "http://image.huaeryun.com/api/image/uploadimage";
+        final String url = "http://imagetest.huaeryun.com/api/image/uploadimage";
         File file1 = new File("/storage/emulated/0/DCIM/Camera", "IMG_20160707_102203.jpg");
         File file2 = new File("/storage/emulated/0/DCIM/Camera", "IMG_20160707_102834.jpg");
         File file3 = new File("/storage/emulated/0/DCIM/Camera", "IMG_20160728_101422.jpg");
@@ -77,12 +77,11 @@ public class MainActivity extends AppCompatActivity {
         MultipartBody.Builder build=new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("image","xll.jpg",RequestBody.create(MEDIA_TYPE_PNG,file1))
-                .addFormDataPart("image","xll.jpg",RequestBody.create(MEDIA_TYPE_PNG,file2))
-                .addFormDataPart("image","xll.jpg",RequestBody.create(MEDIA_TYPE_PNG,file3))
-                .addFormDataPart("image","xll.jpg",RequestBody.create(MEDIA_TYPE_PNG,file4))
+ //               .addFormDataPart("image","xll.jpg",RequestBody.create(MEDIA_TYPE_PNG,file2))
+//                .addFormDataPart("image","xll.jpg",RequestBody.create(MEDIA_TYPE_PNG,file3))
+//                .addFormDataPart("image","xll.jpg",RequestBody.create(MEDIA_TYPE_PNG,file4))
                 .addFormDataPart("imagetype", "1")
-                .addFormDataPart("tenantid","13")
-                ;
+                .addFormDataPart("tenantid","4");
 
 
         Request request = new Request.Builder()
