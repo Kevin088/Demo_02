@@ -25,12 +25,9 @@ public class VideoActivity extends Activity {
 //		=================/**请填充url地址**/======================;
 //		=================/**请填充url地址**/======================;
 		/**故意报错**/
-		videos.add("http://192.168.1.201:8080/test1/01.mp4");
-		videos.add("http://192.168.1.201:8080/test1/01.mp4");
-		videos.add("http://192.168.1.201:8080/test1/01.mp4");
-		videos.add("http://192.168.1.201:8080/test1/01.mp4");
-		videos.add("http://192.168.1.201:8080/test1/01.mp4");
-		videos.add("http://192.168.1.201:8080/test1/01.mp4");
+		for(int i=0;i<100;i++){
+			videos.add("http://192.168.1.201:8080/test1/01.mp4");
+		}
 		VideoAdapter adapter=new VideoAdapter(VideoActivity.this, videos);
 		rlVideoList.setAdapter(adapter);
 	}
