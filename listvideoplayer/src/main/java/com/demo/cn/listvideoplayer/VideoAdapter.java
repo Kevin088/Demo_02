@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,10 +29,15 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 	class VideoViewHolder extends ViewHolder{
 		public VideoViewHolder(View itemView) {
 			super(itemView);
+			videoView=(TextureVideoView) itemView.findViewById(R.id.textureview);
+			//imvPreview=(ImageView) itemView.findViewById(R.id.imv_preview);
+			imvPlay=(ImageView) itemView.findViewById(R.id.imv_video_play);
+			pbWaiting=(ProgressBar) itemView.findViewById(R.id.pb_waiting);
+			pbProgressBar=(ProgressBar) itemView.findViewById(R.id.progress_progressbar);
 		}
 
 		TextureVideoView videoView;
-		ImageView imvPreview;
+		//ImageView imvPreview;
 		ImageView imvPlay;
 		ProgressBar pbWaiting;
 		ProgressBar pbProgressBar;
@@ -47,6 +53,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 		viewHolder.videoView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				Log.e("xll","state====="+viewHolder.videoView.getState());
 				
 				if(mVideos.get(position).length()==0){
 					Toast.makeText(mContext, "视频地址不能为空，请在Activity中设置视频地址哦",Toast.LENGTH_LONG).show();
@@ -67,9 +74,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 					}
 				}
 				TextureVideoView textureView = (TextureVideoView) v;
+				//初次播放
 				if(textureView.getState()== TextureVideoView.MediaState.INIT||textureView.getState()== TextureVideoView.MediaState.RELEASE)
 				{
-					textureView.play(mVideos.get(position));
+					textureView.play(mVideos.get(position),false);
 					viewHolder.pbWaiting.setVisibility(View.VISIBLE);
 					viewHolder.imvPlay.setVisibility(View.GONE);
 				}else if(textureView.getState()== TextureVideoView.MediaState.PAUSE)
@@ -93,12 +101,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 		viewHolder.videoView.setOnStateChangeListener(new TextureVideoView.OnStateChangeListener() {
 			@Override
 			public void onSurfaceTextureDestroyed(SurfaceTexture surface) {
+				Log.e("xll",position+"onSurfaceTextureDestroyed======================");
 				viewHolder.videoView.stop();
+				//viewHolder.videoView.setVisibility(View.GONE);
 				viewHolder.pbWaiting.setVisibility(View.GONE);
 				viewHolder.imvPlay.setVisibility(View.VISIBLE);
 				viewHolder.pbProgressBar.setMax(1);
 				viewHolder.pbProgressBar.setProgress(0);
-				viewHolder.imvPreview.setVisibility(View.VISIBLE);
+				//viewHolder.imvPreview.setVisibility(View.VISIBLE);
 			}
 			
 			@Override
@@ -115,7 +125,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 			
 			@Override
 			public void onSeek(int max,int progress){
-				viewHolder.imvPreview.setVisibility(View.GONE);
+				//viewHolder.imvPreview.setVisibility(View.GONE);
 				viewHolder.pbProgressBar.setMax(max);
 				viewHolder.pbProgressBar.setProgress(progress);
 			}
@@ -126,7 +136,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 				viewHolder.pbProgressBar.setProgress(0);
 				viewHolder.pbWaiting.setVisibility(View.GONE);
 				viewHolder.imvPlay.setVisibility(View.VISIBLE);
-				viewHolder.imvPreview.setVisibility(View.VISIBLE);
+				//viewHolder.imvPreview.setVisibility(View.VISIBLE);
 			}
 
 			@Override
@@ -137,15 +147,17 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
 			@Override
 			public void onTextureViewAvaliable() {
-				
+				Log.e("xll",position+"onTextureViewAvaliable======================");
+
 			}
 
 			@Override
 			public void playFinish() {
 				viewHolder.pbProgressBar.setMax(1);
 				viewHolder.pbProgressBar.setProgress(0);
-				viewHolder.imvPlay.setVisibility(View.GONE);
-				viewHolder.imvPreview.setVisibility(View.VISIBLE);
+				viewHolder.imvPlay.setVisibility(View.VISIBLE);
+				//viewHolder.videoView.setVisibility(View.GONE);
+				//viewHolder.imvPreview.setVisibility(View.VISIBLE);
 			}
 
 			@Override
@@ -159,11 +171,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 	public VideoViewHolder onCreateViewHolder(ViewGroup root, int position) {
 		View containerView=LayoutInflater.from(mContext).inflate(R.layout.videoitem, root, false);
 		VideoViewHolder videoViewHolder=new VideoViewHolder(containerView);
-		videoViewHolder.videoView=(TextureVideoView) containerView.findViewById(R.id.textureview);
-		videoViewHolder.imvPreview=(ImageView) containerView.findViewById(R.id.imv_preview);
-		videoViewHolder.imvPlay=(ImageView) containerView.findViewById(R.id.imv_video_play);
-		videoViewHolder.pbWaiting=(ProgressBar) containerView.findViewById(R.id.pb_waiting);
-		videoViewHolder.pbProgressBar=(ProgressBar) containerView.findViewById(R.id.progress_progressbar);
 		return videoViewHolder;
 	}
 }

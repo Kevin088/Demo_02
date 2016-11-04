@@ -11,6 +11,7 @@ import android.media.MediaPlayer.OnInfoListener;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
@@ -58,6 +59,7 @@ public class TextureVideoView extends TextureView implements
 	private OnInfoListener onInfoListener = new OnInfoListener() {
 		@Override
 		public boolean onInfo(MediaPlayer mp, int what, int extra) {
+			Log.e("xll","OnInfoListener======================"+what+","+extra);
 			if (onStateChangeListener != null&&mediaState!=MediaState.PAUSE) {
 				onStateChangeListener.onPlaying();
 				if (what == MediaPlayer.MEDIA_INFO_BUFFERING_START) {
@@ -73,7 +75,8 @@ public class TextureVideoView extends TextureView implements
 	private OnBufferingUpdateListener bufferingUpdateListener = new OnBufferingUpdateListener() {
 		@Override
 		public void onBufferingUpdate(MediaPlayer mp, int percent) {
-			if (onStateChangeListener != null) {
+			Log.e("xll","onBufferingUpdate======================"+percent);
+			if (onStateChangeListener != null&&!playFinished) {
 				//在某些情况下视频一次性缓冲100%，有些手机竟然不调用OnInfo回调，比如小米2，导致缓冲指示器一直显示，所以在此处添加此代码
 				if(percent==100&&mediaState!=MediaState.PAUSE)
 				{
@@ -106,6 +109,7 @@ public class TextureVideoView extends TextureView implements
 		if (mediaPlayer == null) {
 			if (mediaPlayer == null) {
 				mediaPlayer = new MediaPlayer();
+
 			}
 			mediaPlayer
 					.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -126,6 +130,10 @@ public class TextureVideoView extends TextureView implements
 							return;
 						onStateChangeListener.playFinish();
 						playFinished=true;
+
+						mediaPlayer.stop();
+						mediaPlayer.reset();
+						mediaState=MediaState.INIT;
 					}
 				}
 			});
@@ -210,10 +218,14 @@ public class TextureVideoView extends TextureView implements
 	@Override
 	public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width,
 			int height) {
+		Log.e("xll","onSurfaceTextureSizeChanged======================");
+
 	}
 
 	@Override
 	public void onSurfaceTextureUpdated(SurfaceTexture surface) {
+		Log.e("xll","onSurfaceTextureUpdated======================");
+
 	}
 
 	public void play(String videoUrl) {

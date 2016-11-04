@@ -14,15 +14,10 @@
     android:orientation="vertical"
     tools:context="com.demo.cn.MainActivity">
 
-    <TextView
-        android:id="@+id/tv"
-        android:text="微软雅黑"
+    <Button
+        android:text="Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"/>
-    <TextView
-        android:text="微软雅黑"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"/>
+        android:layout_alignParentTop="true"
+        android:id="@+id/btn_grant" />
 </LinearLayout>
