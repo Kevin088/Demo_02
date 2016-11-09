@@ -21,7 +21,8 @@ public class PermissonActivity extends Activity implements PermissionUtils.Permi
     }
 
     public void onCamera(View view){
-        PermissionUtils.requestPermission(this,PermissionUtils.CODE_CAMERA,this);
+        //PermissionUtils.requestPermission(this,PermissionUtils.CODE_CAMERA,this);
+        takePhoto();
     }
 
     @Override
