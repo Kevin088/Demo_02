@@ -135,4 +135,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
       //  startActivityForResult(intentFromCapture,
       //          200);
     }
+    private void test(){
+        File file=new File("D://test.txt");
+        file.lastModified();
+    }
 }

@@ -101,9 +101,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MultipartBody.Builder builder = new MultipartBody.Builder();
         builder.addFormDataPart("imagetype", "1");
         builder.addFormDataPart("tenantid","4");
+        String[] sdf=new String[]{"sds","sdsd"};
+       // builder.addFormDataPart("sdsd",sdf);
         for (File file : files) {
             builder.addFormDataPart(file.getName(), file.getName(), MultipartBody.create(MediaType.parse("image/png"), file));
         }
+        //builder.addFormDataPart()
         builder.setType(MultipartBody.FORM);
         MultipartBody multipartBody = builder.build();
         HttpTaskUtils.getInstence().UpLoadFiles(new OnSuccessAndFailSub(2,this,this),multipartBody);
