@@ -21,7 +21,7 @@ public class WordsNavigation extends View {
 
     /*绘制的列表导航字母*/
     private String words[] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",
-            "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#"};
+            "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     /*字母画笔*/
     private Paint wordsPaint;
     /*字母背景画笔*/
@@ -50,10 +50,10 @@ public class WordsNavigation extends View {
      */
     private void init() {
         wordsPaint = new Paint();
-        wordsPaint.setColor(Color.parseColor("#F7F7F7"));
+        wordsPaint.setColor(Color.parseColor("#ff7701"));
         wordsPaint.setAntiAlias(true);
         wordsPaint.setTextSize(40);
-        wordsPaint.setTypeface(Typeface.DEFAULT_BOLD);
+        wordsPaint.setTypeface(Typeface.DEFAULT);
 
         bgPaint = new Paint();
         bgPaint.setAntiAlias(true);
@@ -74,13 +74,13 @@ public class WordsNavigation extends View {
         super.onDraw(canvas);
         for (int i = 0; i < words.length; i++) {
             //判断是不是我们按下的当前字母
-            if (touchIndex == i) {
-                //绘制文字圆形背景
-                canvas.drawCircle(itemWidth / 2, itemHeight / 2 + i * itemHeight, 23, bgPaint);
-                wordsPaint.setColor(Color.WHITE);
-            } else {
-                wordsPaint.setColor(Color.GRAY);
-            }
+//            if (touchIndex == i) {
+//                //绘制文字圆形背景
+//                canvas.drawCircle(itemWidth / 2, itemHeight / 2 + i * itemHeight, 23, bgPaint);
+//                wordsPaint.setColor(Color.WHITE);
+//            } else {
+//                wordsPaint.setColor(Color.GRAY);
+//            }
             //获取文字的宽高
             Rect rect = new Rect();
             wordsPaint.getTextBounds(words[i], 0, 1, rect);

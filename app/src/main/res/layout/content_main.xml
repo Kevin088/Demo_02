@@ -33,4 +33,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:id="@+id/btn_03" />
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+    <ProgressBar
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:indeterminateDrawable="@drawable/custom_progress_draw" />
 </LinearLayout>

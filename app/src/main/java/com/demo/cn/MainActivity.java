@@ -24,15 +24,17 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.orhanobut.logger.Logger;
 
 import java.io.File;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-
+    ImageView image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_grant).setOnClickListener(this);
         findViewById(R.id.btn_version).setOnClickListener(this);
         findViewById(R.id.btn_03).setOnClickListener(this);
+        image= (ImageView) findViewById(R.id.image);
     }
 
     public void checkPermissionSdCard(){
@@ -87,7 +90,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 getAndroidSDKVersion();
                 break;
             case R.id.btn_03:
-                ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                //ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//                Glide.with(this)
+//                        .load("http://img4.imgtn.bdimg.com/it/u=3222645689,1083516885&fm=21&gp=0.jpg")
+//                        .into(image);
+
+
+
                 break;
         }
 
