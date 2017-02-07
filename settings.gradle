@@ -1,1 +1,1 @@
-include ':app', ':retrofit_rxjava', ':okhttptest', ':okhttp_zhy', ':SignCalendar', ':autocompletetextview', ':listvideoplayer', ':PermissonTest', ':tinkertest', ':signatureview', ':contactindexlist', ':fourwebview', ':webviewtest'
+include ':app', ':retrofit_rxjava', ':okhttptest', ':okhttp_zhy', ':SignCalendar', ':autocompletetextview', ':listvideoplayer', ':PermissonTest', ':tinkertest', ':signatureview', ':contactindexlist', ':fourwebview', ':webviewtest', ':KeduChiDemo'
