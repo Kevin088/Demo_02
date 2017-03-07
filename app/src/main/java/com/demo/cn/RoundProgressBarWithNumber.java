@@ -189,6 +189,7 @@ public class RoundProgressBarWithNumber extends ProgressBar {
 
     protected int dp2px(int dpVal)
     {
+
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 dpVal, getResources().getDisplayMetrics());
     }
