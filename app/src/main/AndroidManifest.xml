@@ -21,7 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CircleProgressBarActivity"></activity>
+        <activity android:name=".CircleProgressBarActivity" />
+        <activity android:name=".ServiceActivity" />
+        <activity android:name=".ViewPaperActivity" />
     </application>
 
 </manifest>

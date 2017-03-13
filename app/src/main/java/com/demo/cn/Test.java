@@ -18,7 +18,7 @@ public class Test {
         int index=xian.indexOf("县");
         System.out.print(xian.substring(0,index+1));
 
-
+//测试
 
     }
 }

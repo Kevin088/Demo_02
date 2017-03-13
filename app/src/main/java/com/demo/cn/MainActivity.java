@@ -26,15 +26,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
         findViewById(R.id.btn_grant).setOnClickListener(this);
         findViewById(R.id.btn_version).setOnClickListener(this);
 
         findViewById(R.id.btn_04).setOnClickListener(this);
         image= (ImageView) findViewById(R.id.image);
+        findViewById(R.id.btn_06).setOnClickListener(this);
+        findViewById(R.id.btn_07).setOnClickListener(this);
     }
 
     public void checkPermissionSdCard(){
+
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!=
                 PackageManager.PERMISSION_GRANTED){
             if(!ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.CAMERA)){
@@ -90,6 +93,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn_04:
                 startActivity(new Intent(this,CircleProgressBarActivity.class));
                 break;
+            case R.id.btn_05:
+                startActivity(new Intent(this,CircleProgressBarActivity.class));
+            case R.id.btn_06:
+                startActivity(new Intent(this,ViewPaperActivity.class));
+                break;
+            case R.id.btn_07:
+                break;
         }
 
     }
@@ -106,10 +116,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
 
 
-
-        int s=Build.VERSION.SDK_INT;
+        sss();
         int v=Build.VERSION_CODES.M;
         return version;
+    }
+
+    private static void sss() {
+        int s= Build.VERSION.SDK_INT;
     }
 
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
