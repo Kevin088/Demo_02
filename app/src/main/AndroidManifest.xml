@@ -24,6 +24,7 @@
         <activity android:name=".CircleProgressBarActivity" />
         <activity android:name=".ServiceActivity" />
         <activity android:name=".ViewPaperActivity" />
+        <activity android:name=".ImageCodeActivity"></activity>
     </application>
 
 </manifest>

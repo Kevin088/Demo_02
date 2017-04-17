@@ -58,4 +58,9 @@
         android:text="ViewPager_demo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_08"
+        android:text="图形验证码"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

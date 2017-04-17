@@ -34,6 +34,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         image= (ImageView) findViewById(R.id.image);
         findViewById(R.id.btn_06).setOnClickListener(this);
         findViewById(R.id.btn_07).setOnClickListener(this);
+        findViewById(R.id.btn_08).setOnClickListener(this);
     }
 
     public void checkPermissionSdCard(){
@@ -99,6 +100,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this,ViewPaperActivity.class));
                 break;
             case R.id.btn_07:
+                break;
+            case R.id.btn_08:
+                startActivity(new Intent(this,ImageCodeActivity.class));
                 break;
         }
 
