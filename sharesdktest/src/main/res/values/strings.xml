@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">测试</string>
+    <!--分享-->
+    <string name="tencent_scheme">tencent1104947930</string>
+</resources>

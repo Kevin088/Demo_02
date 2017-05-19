@@ -53,18 +53,8 @@ public class MainActivity extends Activity {
         }
         if(checkSelfPermission!=
                 PackageManager.PERMISSION_GRANTED){
-//            if(){
-//                showMessageOKCancel("xll授予权限", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-//                                200);
-//                    }
-//                });
-//            }else{
                 ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},
                         200);
-         //   }
 
         }else{
             Toast.makeText(this,"this已授权",Toast.LENGTH_LONG).show();
