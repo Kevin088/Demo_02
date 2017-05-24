@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 23
@@ -32,4 +33,8 @@ dependencies {
     compile files('libs/ShareSDK-Wechat-Moments-2.7.10.jar')
     compile files('libs/MobCommons-2016.1107.1809.jar')
     compile files('libs/MobTools-2016.1107.1809.jar')
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
