@@ -1,10 +1,12 @@
 package com.demo.cn.retrofit_rxjava;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.demo.cn.retrofit_rxjava.rxjava.RxjavaActivity;
 import com.orhanobut.logger.Logger;
 
 import org.json.JSONException;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.bt_cancel).setOnClickListener(this);
         findViewById(R.id.bt_imageupload).setOnClickListener(this);
         findViewById(R.id.bt_imageupload_part).setOnClickListener(this);
+        findViewById(R.id.bt_rxjava).setOnClickListener(this);
     }
     @Override
     public void onClick(View view) {
@@ -61,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //sendServceUploadImagesWithMapPart();
 
                 Logger.d("hello");
+                break;
+            case R.id.bt_rxjava:
+                startActivity(new Intent(this, RxjavaActivity.class));
                 break;
         }
 

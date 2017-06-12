@@ -25,4 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="文件上传Part" />
+    <Button
+        android:id="@+id/bt_rxjava"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rxjava" />
 </LinearLayout>
