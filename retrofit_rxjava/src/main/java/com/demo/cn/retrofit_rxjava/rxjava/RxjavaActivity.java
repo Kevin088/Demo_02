@@ -64,7 +64,6 @@ public class RxjavaActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
 
