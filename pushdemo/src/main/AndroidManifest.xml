@@ -111,11 +111,11 @@
             android:taskAffinity="com.igexin.sdk.PushActivityTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <service
-            android:name="co.pushdemo.GTPushService"
+            android:name="co.pushdemo.DfhePushService"
             android:exported="true"
             android:label="PushService"
             android:process=":pushservice"></service>
-        <service android:name="co.pushdemo.PushIntentService"/>
+        <service android:name="co.pushdemo.DfhePushIntentService"/>
         <!-- 个推SDK配置结束 -->
     </application>
 

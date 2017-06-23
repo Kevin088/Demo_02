@@ -9,8 +9,8 @@ import com.igexin.sdk.message.GTTransmitMessage;
 
 import java.io.UnsupportedEncodingException;
 
-public class PushIntentService  extends GTIntentService {
-    public PushIntentService() {
+public class DfhePushIntentService extends GTIntentService {
+    public DfhePushIntentService() {
 
     }
     @Override

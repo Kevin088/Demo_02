@@ -6,7 +6,7 @@ import android.os.IBinder;
 
 import com.igexin.sdk.GTServiceManager;
 
-public class GTPushService extends Service {
+public class DfhePushService extends Service {
 
     @Override
     public void onCreate() {
