@@ -35,6 +35,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_06).setOnClickListener(this);
         findViewById(R.id.btn_07).setOnClickListener(this);
         findViewById(R.id.btn_08).setOnClickListener(this);
+        findViewById(R.id.btn_09).setOnClickListener(this);
+        findViewById(R.id.btn_10).setOnClickListener(this);
     }
 
     public void checkPermissionSdCard(){
@@ -104,6 +106,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn_08:
                 startActivity(new Intent(this,ImageCodeActivity.class));
                 break;
+            case R.id.btn_09:
+                startActivity(new Intent(this.getApplicationContext(),DialogActivity.class));
+                break;
+            case R.id.btn_10:
+                startActivity(new Intent(this.getApplicationContext(),TimerTestActivity.class));
+                break;
         }
 
     }
@@ -156,5 +164,35 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void test(){
         File file=new File("D://test.txt");
         file.lastModified();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("ssssssss","onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("ssssssss","onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("ssssssss","onStop");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e("ssssssss","onRestart");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("ssssssss","onStart");
     }
 }

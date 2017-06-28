@@ -24,7 +24,11 @@
         <activity android:name=".CircleProgressBarActivity" />
         <activity android:name=".ServiceActivity" />
         <activity android:name=".ViewPaperActivity" />
-        <activity android:name=".ImageCodeActivity"></activity>
+        <activity android:name=".ImageCodeActivity" />
+        <activity
+            android:name=".DialogActivity"
+            android:theme="@style/dialogstyle" />
+        <activity android:name=".TimerTestActivity"></activity>
     </application>
 
 </manifest>
