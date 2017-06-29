@@ -25,6 +25,8 @@
         <activity android:name=".ServiceActivity" />
         <activity android:name=".ViewPaperActivity" />
         <activity android:name=".ImageCodeActivity" />
+        <activity android:name=".TimerTestActivity"></activity>
+        <activity android:name=".ImageCodeActivity" />
         <activity
             android:name=".DialogActivity"
             android:theme="@style/dialogstyle" />

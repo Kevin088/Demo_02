@@ -65,6 +65,11 @@
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/btn_09"
+        android:text="Timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_09"
         android:text="ActivityDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
