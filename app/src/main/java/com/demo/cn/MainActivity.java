@@ -37,6 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_08).setOnClickListener(this);
         findViewById(R.id.btn_09).setOnClickListener(this);
         findViewById(R.id.btn_10).setOnClickListener(this);
+        findViewById(R.id.btn_11).setOnClickListener(this);
     }
 
     public void checkPermissionSdCard(){
@@ -107,10 +108,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this,ImageCodeActivity.class));
                 break;
             case R.id.btn_09:
-                startActivity(new Intent(this.getApplicationContext(),DialogActivity.class));
+                Intent intent=new Intent(this.getApplicationContext(),DialogActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                this.getApplicationContext().startActivity(intent);
                 break;
             case R.id.btn_10:
                 startActivity(new Intent(this.getApplicationContext(),TimerTestActivity.class));
+                break;
+            case R.id.btn_11:
+                alertDialog();
                 break;
         }
 
@@ -194,5 +200,31 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onStart() {
         super.onStart();
         Log.e("ssssssss","onStart");
+    }
+    public void alertDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.mipmap.ic_launcher);
+        builder.setTitle("Title");
+        builder.setMessage("Message");
+        builder.setPositiveButton("Button1",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        setTitle("点击了对话框上的Button1");
+                    }
+                });
+        builder.setNeutralButton("Button2",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        setTitle("点击了对话框上的Button2");
+                    }
+                });
+        builder.setNegativeButton("Button3",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        setTitle("点击了对话框上的Button3");
+                    }
+                });
+        builder.setCancelable(false);
+        builder.show();
     }
 }
