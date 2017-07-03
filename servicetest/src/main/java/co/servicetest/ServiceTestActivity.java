@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 
 
@@ -20,6 +21,7 @@ public class ServiceTestActivity extends Activity {
             @Override
             public void onServiceConnected(ComponentName name, IBinder binder) {
                 service=((MyService.MyBinder)binder).getService();
+                Log.e("ssss","Connected=============");
             }
 
             @Override
@@ -36,7 +38,11 @@ public class ServiceTestActivity extends Activity {
         findViewById(R.id.btn02).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ServiceTestActivity.this.unbindService(connection);
+                if(service!=null){
+                    ServiceTestActivity.this.unbindService(connection);
+                    service=null;
+                }
+
             }
         });
 
@@ -56,6 +62,7 @@ public class ServiceTestActivity extends Activity {
         findViewById(R.id.btn06).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(service!=null)
                 service.serviceMethod();
             }
         });

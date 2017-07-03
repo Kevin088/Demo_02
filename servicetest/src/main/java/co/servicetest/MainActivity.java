@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
         connection=new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder binder) {
+                Log.e("ssss","Connected=============");
                 service=((MyService.MyBinder)binder).getService();
             }
 
@@ -45,7 +46,10 @@ public class MainActivity extends Activity {
         findViewById(R.id.btn03).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.this.unbindService(connection);
+                if(service!=null){
+                    MainActivity.this.unbindService(connection);
+                    service=null;
+                }
             }
         });
         findViewById(R.id.btn04).setOnClickListener(new View.OnClickListener() {
