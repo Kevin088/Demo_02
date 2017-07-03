@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +20,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.xdandroid.materialprogressview.MaterialProgressView;
+
 import java.io.File;
+
+import static android.os.Build.VERSION_CODES.M;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     ImageView image;
@@ -39,6 +44,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_09).setOnClickListener(this);
         findViewById(R.id.btn_10).setOnClickListener(this);
         findViewById(R.id.btn_11).setOnClickListener(this);
+        MaterialProgressView imageView= (MaterialProgressView) findViewById(R.id.progressview);
+        imageView.setColorSchemeColors(new int[]{getResources().getColor(R.color.colorPrimary)});
+        imageView.setProgressBackgroundColor(Color.parseColor("#00ffffff"));
+        imageView.setColorViewAlpha(255);
+
     }
 
     public void checkPermissionSdCard(){
@@ -125,7 +135,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
         sss();
-        int v=Build.VERSION_CODES.M;
+        int v= M;
         return version;
     }
 

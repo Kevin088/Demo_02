@@ -25,6 +25,7 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.5.2'
     compile 'com.orhanobut:logger:1.15'
     compile 'com.android.support:support-v4:25.0.0'
-
+    compile 'com.xdandroid:materialprogressview:+'
     testCompile 'junit:junit:4.12'
+
 }
