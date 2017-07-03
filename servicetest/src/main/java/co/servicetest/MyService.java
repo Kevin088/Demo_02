@@ -9,8 +9,11 @@ import android.widget.Toast;
 
 /**                             startCommand
  * 1.service的生命周期  onCreate onBind--------  unBind onDestroy
- * 2.绑定服务：多次绑定只启动第一次，多次解绑会异常；绑定服务和当前Activity共存亡
- * 3.启动服务：多次启动之后 ，只调用onStartCommand方法
+ * 2.绑定服务：多次绑定只启动第一次，多次解绑会异常；绑定服务和当前Activity共存亡;
+ * 一个服务可以被多个activity绑定 只是第一个绑定的会走 onCreate onBind, 最后一个activity销毁后 才会走onUnbind onDestroy;
+ * 一个activity 启动绑定服务 ，销魂时 要解绑服务；
+ * 3.启动服务：多次启动之后 ，只调用onStartCommand方法；
+ * 可以任意activity启动，任意activity停止；
  * 4.混合启动：解除绑定并且停止服务 才会调用onDestroy
  */
 public class MyService extends Service {

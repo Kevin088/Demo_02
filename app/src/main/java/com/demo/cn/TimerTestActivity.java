@@ -19,13 +19,7 @@ public class TimerTestActivity extends AppCompatActivity implements View.OnClick
         findViewById(R.id.btn_01).setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btn:
-        findViewById(R.id.btn_01).setOnClickListener(this);
-        findViewById(R.id.btn_02).setOnClickListener(this);
-    }
+
 
     @Override
     public void onClick(View v) {
@@ -44,22 +38,14 @@ public class TimerTestActivity extends AppCompatActivity implements View.OnClick
 
                 timer.schedule(timerTask,2000,2000);
                 break;
-            case R.id.btn_01:
+            case R.id.btn_02:
                 timer.cancel();
                 timerTask.cancel();
                 break;
         }
-
-    }
-
-                timer.schedule(timerTask,2000,3000);
-                break;
-            case R.id.btn_02:
-                if(timer!=null&&timerTask!=null){
-                    timer.cancel();
-                    timerTask.cancel();
-                }
-                break;
         }
-    }
+
+
+
+
 }
