@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
 
+
 public class ServiceTestActivity extends Activity {
     MyService service=null;
     ServiceConnection connection=null;
@@ -50,6 +51,12 @@ public class ServiceTestActivity extends Activity {
             @Override
             public void onClick(View v) {
                 ServiceTestActivity.this.stopService(new Intent(ServiceTestActivity.this,MyService.class));
+            }
+        });
+        findViewById(R.id.btn06).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                service.serviceMethod();
             }
         });
     }

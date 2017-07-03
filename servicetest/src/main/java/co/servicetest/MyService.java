@@ -5,7 +5,14 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
+/**                             startCommand
+ * 1.service的生命周期  onCreate onBind--------  unBind onDestroy
+ * 2.绑定服务：多次绑定只启动第一次，多次解绑会异常；绑定服务和当前Activity共存亡
+ * 3.启动服务：多次启动之后 ，只调用onStartCommand方法
+ * 4.混合启动：解除绑定并且停止服务 才会调用onDestroy
+ */
 public class MyService extends Service {
     public MyService() {
         Log.e("ssss","MyService=============");
@@ -51,5 +58,8 @@ public class MyService extends Service {
     public void onDestroy() {
         Log.e("ssss","onDestroy=============");
         super.onDestroy();
+    }
+    public void serviceMethod(){
+        Log.e("ssss","serviceMethod=============");
     }
 }
