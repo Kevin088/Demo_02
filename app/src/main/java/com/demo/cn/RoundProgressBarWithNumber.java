@@ -160,7 +160,7 @@ public class RoundProgressBarWithNumber extends ProgressBar {
         mPaint.setStrokeWidth(mReachedProgressBarHeight);
         float sweepAngle = getProgress() * 1.0f / getMax() * 360;
         canvas.drawArc(new RectF(0, 0, mRadius * 2, mRadius * 2), -90,
-                sweepAngle-90, false, mPaint);
+                sweepAngle, false, mPaint);
         // draw text
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setTextSize(mTextSize);
