@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -23,6 +26,7 @@ import android.widget.Toast;
 import com.xdandroid.materialprogressview.MaterialProgressView;
 
 import java.io.File;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import static android.os.Build.VERSION_CODES.M;
 
@@ -49,6 +53,35 @@ public class MainActivity extends Activity implements View.OnClickListener {
         imageView.setProgressBackgroundColor(Color.parseColor("#00ffffff"));
         imageView.setColorViewAlpha(255);
 
+
+        new AsyncTask<String,Integer,String>(){
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected String doInBackground(String... voids) {
+                publishProgress();//会导致在MainThread中调用 onProgressUpdate()
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String aVoid) {
+                super.onPostExecute(aVoid);
+            }
+
+            @Override
+            protected void onProgressUpdate(Integer... values) {
+                super.onProgressUpdate(values);
+            }
+        };
+        Handler sd=new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+            }
+        };
     }
 
     public void checkPermissionSdCard(){
