@@ -77,6 +77,7 @@ final class DecodeHandler extends Handler {
     Result rawResult = null;
     PlanarYUVLuminanceSource source = activity.getCameraManager().buildLuminanceSource(data, width, height);
     if (source != null) {
+      Log.e("sssss","source != null==============");
       BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
       try {
         rawResult = multiFormatReader.decodeWithState(bitmap);
@@ -89,17 +90,19 @@ final class DecodeHandler extends Handler {
 
     Handler handler = activity.getHandler();
     if (rawResult != null) {
+      Log.e("sssss","rawResult != null==============");
       // Don't log the barcode contents for security.
       long end = System.currentTimeMillis();
       Log.d(TAG, "Found barcode in " + (end - start) + " ms");
       if (handler != null) {
         Message message = Message.obtain(handler, R.id.decode_succeeded, rawResult);
         Bundle bundle = new Bundle();
-        bundleThumbnail(source, bundle);        
+        bundleThumbnail(source, bundle);
         message.setData(bundle);
         message.sendToTarget();
       }
     } else {
+      Log.e("sssss","rawResult == null==============");
       if (handler != null) {
         Message message = Message.obtain(handler, R.id.decode_failed);
         message.sendToTarget();

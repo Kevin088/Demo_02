@@ -320,6 +320,10 @@ public final class CameraManager {
    */
   public PlanarYUVLuminanceSource buildLuminanceSource(byte[] data, int width, int height) {
     Rect rect = getFramingRectInPreview();
+
+
+
+
     if (rect == null) {
       return null;
     }
