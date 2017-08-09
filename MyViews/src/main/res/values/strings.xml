@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyViews</string>
+    <string name="title_activity_myview">MyviewActivity</string>
+</resources>

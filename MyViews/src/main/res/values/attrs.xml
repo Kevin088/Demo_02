@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--动态水纹的自定义属性（水纹高度，水纹颜色，波浪幅度，偏移量）-->
+    <declare-styleable name="myDynamicWave">
+        <attr name="wave_height" format="integer"></attr>
+        <attr name="wave_color" format="integer"></attr>
+        <attr name="wave_range" format="integer"></attr>
+        <attr name="wave_excursion" format="integer"></attr>
+
+    </declare-styleable>
+
+    <!--圆角矩形-->
+    <declare-styleable name="MultiShapeView">
+        <attr name="shape" format="enum">
+            <enum name="rect" value="1"/>
+            <enum name="circle" value="2"/>
+        </attr>
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="cover_color" format="color" />
+        <attr name="round_radius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="pickerview">
+        <attr name="pickerview_gravity">
+            <enum name="center" value="17" />
+            <enum name="left" value="3" />
+            <enum name="right" value="5" />
+        </attr>
+        <attr name="pickerview_textSize" format="dimension" />
+        <attr name="pickerview_textColorOut" format="color" />
+        <attr name="pickerview_textColorCenter" format="color" />
+        <attr name="pickerview_dividerColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="MyTextView">
+        <attr name="faceImageSize" format="float" />
+    </declare-styleable>
+
+
+    <!-- 渐变色的不规则图形 -->
+    <declare-styleable name="GradientShape">
+        <attr name="border_count" format="integer" />
+        <attr name="first_x" format="integer" />
+        <attr name="first_y" format="integer" />
+        <attr name="second_x" format="integer" />
+        <attr name="second_y" format="integer" />
+        <attr name="third_x" format="integer" />
+        <attr name="third_y" format="integer" />
+        <attr name="fourth_x" format="integer" />
+        <attr name="fourth_y" format="integer" />
+        <attr name="fifth_x" format="integer" />
+        <attr name="fifth_y" format="integer" />
+        <attr name="start_color" format="color" />
+        <attr name="end_color" format="color" />
+        <attr name="middle_x" format="float" />
+    </declare-styleable>
+    <!-- 圆形进度条 -->
+    <declare-styleable name="RoundProgressBarWidthNumber">
+        <attr name="progress_reached_bar_height" format="dimension" />
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+</resources>

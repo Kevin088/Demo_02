@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_my="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_path"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.cn.view.PolygonView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android_my:border_count="5"
+        android_my:first_x="0"
+        android_my:first_y="0"
+        android_my:second_x="0"
+        android_my:second_y="50"
+        android_my:third_y="100"
+        android_my:fourth_y="50"
+        android_my:fifth_y="0"
+        android_my:middle_x="0.5"
+        android_my:start_color="@color/gradient_left"
+        android_my:end_color="@color/gradient_right"/>
+</RelativeLayout>

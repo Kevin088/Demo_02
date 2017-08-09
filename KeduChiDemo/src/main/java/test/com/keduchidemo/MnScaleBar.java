@@ -149,9 +149,9 @@ public class MnScaleBar extends View {
                 if(mCountScale<0) mCountScale=0;
                 if(mCountScale>max) mCountScale=max;
                 int finalX = (mCountScale-mScreenMidCountScale) * mScaleMargin;
-                mScroller.setFinalX(finalX); //纠正指针位置
-                postInvalidate();
-                return true;
+
+                return true;                mScroller.setFinalX(finalX); //纠正指针位置
+            postInvalidate();
         }
 
         return super.onTouchEvent(event);
