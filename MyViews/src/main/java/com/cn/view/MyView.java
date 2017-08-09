@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Scroller;
 
 import com.cn.R;
+import com.cn.util.Utils;
 
 import java.util.Random;
 
@@ -29,6 +30,8 @@ public class MyView extends View {
     Point yuandian=new Point(100,700);
     int []array=new int[30];
     Scroller mScroller;
+    int value;
+    int pointerX;
     public MyView(Context context) {
         this(context,null);
     }
@@ -46,6 +49,7 @@ public class MyView extends View {
             Log.e("ssss",array[i]+"");
         }
         mScroller=new Scroller(context);
+        pointerX= (Utils.getScreenWidth(context)-yuandian.x)/2+yuandian.x+10;
     }
 
     @Override
@@ -70,7 +74,7 @@ public class MyView extends View {
             if(i>0){
                 paint.setColor(ContextCompat.getColor(context,R.color.blue));
                 canvas.drawLine(yuandian.x+(i-1)*xMargin,yuandian.y-array[i-1],yuandian.x+i*xMargin,yuandian.y-array[i],paint);
-
+                paint.setStyle(Paint.Style.FILL);
                 canvas.drawCircle(yuandian.x+(i-1)*xMargin,yuandian.y-array[i-1],10,paint);
                 paint.setColor(ContextCompat.getColor(context,R.color.write));
                 canvas.drawCircle(yuandian.x+(i-1)*xMargin,yuandian.y-array[i-1],8,paint);
@@ -83,8 +87,19 @@ public class MyView extends View {
             }
 
         }
+        paint.setColor(ContextCompat.getColor(context,R.color.blue));
+        canvas.drawLine(pointerX+mScroller.getFinalX(),90,pointerX+mScroller.getFinalX(),yuandian.y,paint);
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawCircle(pointerX+mScroller.getFinalX(),50,40,paint);
 
-
+        int scrollx=mScroller.getFinalX()+pointerX-yuandian.x;
+        if(scrollx%xMargin==0){
+            int index=scrollx/xMargin;
+            if(index>=0&&index<array.length){
+                value=array[index];
+            }
+        }
+        canvas.drawText(value+"",pointerX+mScroller.getFinalX(),50,paint);
     }
     float mScrollLastx;
     @Override
@@ -99,13 +114,37 @@ public class MyView extends View {
                 return true;
             case MotionEvent.ACTION_MOVE:
                 float dataX=mScrollLastx-x;
-                //smoothScrollBy(dataX,0);
-                scrollBy((int)dataX, 0);
+                if(dataX<0&&mScroller.getFinalX()<0&&mScroller.getFinalX()<=(-pointerX+yuandian.x))
+                    return true;
+                if(dataX>0&&mScroller.getFinalX()>0&&mScroller.getFinalX()>=(yuandian.x+xMargin*29-pointerX))
+                    return  true;
+
+                smoothScrollBy(dataX,0);
                 mScrollLastx=x;
                 postInvalidate();
+
+
+                Log.e("ssss",mScroller.getFinalX()+"============");
                 return true;
             case MotionEvent.ACTION_UP:
-                //mScroller.setFinalX((int)x); //纠正指针位置
+                int finalX=mScroller.getFinalX();
+                int a=finalX%xMargin;
+                if(a>0){
+                    int b=xMargin/2-a;
+                    if(b>0){
+                        mScroller.setFinalX(finalX-a);
+                    }if(b<0){
+                        mScroller.setFinalX(finalX+xMargin-a);
+                    }
+                }else{
+                    int b=xMargin/2+a;
+                    if(b>0){
+                        mScroller.setFinalX(finalX-a);
+                    }if(b<0){
+                        mScroller.setFinalX(finalX-(xMargin+a));
+                    }
+                }
+
                 postInvalidate();
                 return true;
         }
@@ -114,15 +153,20 @@ public class MyView extends View {
         return super.onTouchEvent(event);
     }
 
-//    public void smoothScrollBy(float dx, float dy){
-//        mScroller.startScroll(mScroller.getFinalX(), mScroller.getFinalY(), (int)dx, (int)dy);
-//    }
-//    @Override
-//    public void computeScroll() {
-//        if(mScroller.computeScrollOffset()){
-//
-//            postInvalidate();
-//        }
-//        super.computeScroll();
-//    }
+    public void smoothScrollBy(float dx, float dy){
+        mScroller.startScroll(mScroller.getFinalX(), mScroller.getFinalY(), (int)dx, (int)dy);
+    }
+    @Override
+    public void computeScroll() {
+        /**
+         * computeScrollOffset 调用一次进行一次 移动计算 ，并执行scrollTo来实现view的真正移动
+         * Invalidate()执行后会调用onDrow(),onDrow会调用computeScroll()方法；
+         */
+        if(mScroller.computeScrollOffset()){
+            scrollTo(mScroller.getCurrX(),0);
+
+            postInvalidate();
+        }
+        super.computeScroll();
+    }
 }
