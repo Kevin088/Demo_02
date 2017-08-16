@@ -7,6 +7,11 @@
     android:background="#fff"
     tools:context="com.cn.activity.MyViewActivity">
         <com.cn.view.MyView
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
-            android:layout_height="500dp"/>
+            android:layout_height="300dp"
+            android:background="#ddd"/>
 </RelativeLayout>

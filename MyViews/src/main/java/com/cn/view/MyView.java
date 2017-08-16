@@ -23,11 +23,13 @@ import java.util.Random;
  * @date 2017/8/8.
  */
 public class MyView extends View {
+    int width;
+    int height;
     Context context;
-    int[] yPoints={100,200,300,400,500,600};
-    int xMargin=100;
+    int[] yPoints=new int[6];
+    int xMargin,yMargin;
     Paint paint=new Paint();
-    Point yuandian=new Point(100,700);
+    Point yuandian=new Point();
     int []array=new int[30];
     Scroller mScroller;
     int value;
@@ -43,13 +45,28 @@ public class MyView extends View {
     public MyView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context=context;
+        mScroller=new Scroller(context);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        width=getWidth();
+        height=getHeight();
+        yMargin=height/7;
+        for(int i=0;i<6;i++){
+            yPoints[i]=yMargin*(i+1);
+        }
+        xMargin=height/7;
+        yuandian.x=100;
+        yuandian.y=height;
+
         Random random=new Random();
         for(int i=0;i<30;i++){
-            array[i]=random.nextInt(601);
-            Log.e("ssss",array[i]+"");
+            array[i]=random.nextInt(height*7/8);
         }
-        mScroller=new Scroller(context);
-        pointerX= (Utils.getScreenWidth(context)-yuandian.x)/2+yuandian.x+10;
+
+        pointerX= ((width-yuandian.x)/2/xMargin+1)*xMargin+yuandian.x;
     }
 
     @Override
@@ -63,10 +80,10 @@ public class MyView extends View {
         canvas.drawLine(yuandian.x,yuandian.y,yuandian.x+xMargin*30,yuandian.y,paint);
 
         for(int i=1;i<=yPoints.length;i++){
-            canvas.drawLine(yuandian.x,yuandian.y-i*100,yuandian.x+xMargin*30,yuandian.y-i*100,paint);
+            canvas.drawLine(yuandian.x,yuandian.y-i*yMargin,yuandian.x+xMargin*30,yuandian.y-i*yMargin,paint);
             paint.setTextSize(22);
             paint.setTextAlign(Paint.Align.CENTER);
-            canvas.drawText(yPoints[i-1]+"",yuandian.x/2,yuandian.y-i*100,paint);
+            canvas.drawText(yPoints[i-1]+"",yuandian.x/2,yuandian.y-i*yMargin,paint);
         }
         for(int i=0;i<30;i++){
             paint.setColor(ContextCompat.getColor(context, R.color.grey));
