@@ -1,4 +1,4 @@
-include ':app', ':zxinglib', ':zxing', ':UsbPcAndroid', ':MyViews'
+include ':app', ':zxinglib', ':zxing', ':kotlintest', ':MyViews'
 //':voiceplayer'
 //':retrofit_rxjava', ':okhttptest', ':okhttp_zhy', ':SignCalendar', ':listvideoplayer', ':PermissonTest', ':tinkertest', ':signatureview', ':contactindexlist', ':fourwebview', ':webviewtest', ':KeduChiDemo',
 //':retrofit_rxjava', ':ServiceBind', ':ServiceStart', ':KeduChiDemo', ':ServiceTest', ':ocrtest', ':PermissonTest', ':sharesdktest', ':kotlintest', ':Mvp', ':KtRetrofit', ':imagepicker', ':pushdemo', ':pushdemo', ':orientationscreen', ':waitdialog',
