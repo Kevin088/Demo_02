@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import com.cn.activity.MyViewActivity;
 import com.cn.activity.Path2Activity;
 import com.cn.activity.PathActivity;
+import com.cn.activity.ZoomImageActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -38,5 +39,9 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.myview)
     void pathClick3(){
         startActivity(new Intent(this,MyViewActivity.class));
+    }
+    @OnClick(R.id.zoom)
+    void pathClick4(){
+        startActivity(new Intent(this,ZoomImageActivity.class));
     }
 }

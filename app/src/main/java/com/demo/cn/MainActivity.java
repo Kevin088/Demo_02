@@ -48,6 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_09).setOnClickListener(this);
         findViewById(R.id.btn_10).setOnClickListener(this);
         findViewById(R.id.btn_11).setOnClickListener(this);
+        findViewById(R.id.btn_12).setOnClickListener(this);
         MaterialProgressView imageView= (MaterialProgressView) findViewById(R.id.progressview);
         imageView.setColorSchemeColors(new int[]{getResources().getColor(R.color.colorPrimary)});
         imageView.setProgressBackgroundColor(Color.parseColor("#00ffffff"));
@@ -150,6 +151,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btn_08:
                 startActivity(new Intent(this,ImageCodeActivity.class));
+                break;
+            case R.id.btn_12:
+                startActivity(new Intent(this,SelectSeatActivity.class));
                 break;
         }
 
