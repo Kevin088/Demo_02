@@ -161,19 +161,21 @@ public class SelectSeatView extends View{
             canvas.drawText(k+1+"",right-(rectF.right-rectF.left)/2,(10+top+k*(seatBitmap.getHeight()+horizontalSpace)+seatBitmap.getHeight()/2)*zoom+translateY,paint);
         }
     }
+    float startX;
+    float startY;
+    float endX;
+    float endY;
+   // float downX,downY;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         gestureDetector.onTouchEvent(event);
         mScaleGesturedetector.onTouchEvent(event);
-        float startX=0;
-        float startY=0;
-        float endX=0;
-        float endY=0;
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 startX=event.getX();
                 startY=event.getY();
+                Log.e("ddddddd","startX="+startX+",,,,,startY:"+startY);
                 if(isOnclick){
                     point.x=(int)event.getX();
                     point.y=(int)event.getY();
@@ -186,10 +188,11 @@ public class SelectSeatView extends View{
                     endY=event.getY();
                     float transX=endX-startX;
                     float transY=endY-startY;
-                    Log.e("ddddddd",transX+"====="+transY);
-                    if(Math.abs(transX)>1000||Math.abs(transY)>1000){
-                        matrix.postTranslate(10,10);
-                        invalidate();
+                    Log.e("ddddddd","endX="+endX+",,,,,endY:"+endY);
+                    Log.e("ddddddd","transX="+transX+",,,,,transY:"+transY);
+                    if(Math.abs(transX)>10||Math.abs(transY)>10){
+                        //matrix.postTranslate(transX,transY);
+                        //invalidate();
                     }
                 }
                 break;
