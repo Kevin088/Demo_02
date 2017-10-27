@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.xdandroid.materialprogressview.MaterialProgressView;
+//import com.xdandroid.materialprogressview.MaterialProgressView;
 
 import java.io.File;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -48,10 +48,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_09).setOnClickListener(this);
         findViewById(R.id.btn_10).setOnClickListener(this);
         findViewById(R.id.btn_11).setOnClickListener(this);
-        MaterialProgressView imageView= (MaterialProgressView) findViewById(R.id.progressview);
-        imageView.setColorSchemeColors(new int[]{getResources().getColor(R.color.colorPrimary)});
-        imageView.setProgressBackgroundColor(Color.parseColor("#00ffffff"));
-        imageView.setColorViewAlpha(255);
+//        MaterialProgressView imageView= (MaterialProgressView) findViewById(R.id.progressview);
+//        imageView.setColorSchemeColors(new int[]{getResources().getColor(R.color.colorPrimary)});
+//        imageView.setProgressBackgroundColor(Color.parseColor("#00ffffff"));
+//        imageView.setColorViewAlpha(255);
 
 
         new AsyncTask<String,Integer,String>(){

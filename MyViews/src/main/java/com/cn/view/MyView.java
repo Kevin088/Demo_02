@@ -8,7 +8,9 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
+import android.widget.ScrollView;
 import android.widget.Scroller;
 
 import com.cn.R;
@@ -23,6 +25,8 @@ import java.util.Random;
  * @date 2017/8/8.
  */
 public class MyView extends View {
+
+    ScrollView dd;
     Context context;
     int[] yPoints={100,200,300,400,500,600};
     int xMargin=100;
@@ -30,6 +34,7 @@ public class MyView extends View {
     Point yuandian=new Point(100,700);
     int []array=new int[30];
     Scroller mScroller;
+    private VelocityTracker velocityTracker;
     int value;
     int pointerX;
     public MyView(Context context) {
@@ -56,6 +61,7 @@ public class MyView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         paint.setAntiAlias(true);
+        paint.setStrokeWidth(4);
         paint.setColor(ContextCompat.getColor(context, R.color.grey));
         //y轴
         canvas.drawLine(yuandian.x,0,yuandian.x,yuandian.y,paint);
@@ -64,6 +70,7 @@ public class MyView extends View {
 
         for(int i=1;i<=yPoints.length;i++){
             canvas.drawLine(yuandian.x,yuandian.y-i*100,yuandian.x+xMargin*30,yuandian.y-i*100,paint);
+            paint.setStrokeWidth(2);
             paint.setTextSize(22);
             paint.setTextAlign(Paint.Align.CENTER);
             canvas.drawText(yPoints[i-1]+"",yuandian.x/2,yuandian.y-i*100,paint);
@@ -72,6 +79,7 @@ public class MyView extends View {
             paint.setColor(ContextCompat.getColor(context, R.color.grey));
             canvas.drawText(i+1+"号",yuandian.x+i*xMargin,yuandian.y+25,paint);
             if(i>0){
+                paint.setStrokeWidth(4);
                 paint.setColor(ContextCompat.getColor(context,R.color.blue));
                 canvas.drawLine(yuandian.x+(i-1)*xMargin,yuandian.y-array[i-1],yuandian.x+i*xMargin,yuandian.y-array[i],paint);
                 paint.setStyle(Paint.Style.FILL);
@@ -99,12 +107,17 @@ public class MyView extends View {
                 value=array[index];
             }
         }
+        paint.setStrokeWidth(2);
         canvas.drawText(value+"",pointerX+mScroller.getFinalX(),50,paint);
     }
     float mScrollLastx;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float x=event.getX();
+        if (velocityTracker == null) {
+            velocityTracker = VelocityTracker.obtain();
+        }
+        velocityTracker.addMovement(event);
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 if(mScroller!=null&&!mScroller.isFinished()){
@@ -127,29 +140,31 @@ public class MyView extends View {
                 Log.e("ssss",mScroller.getFinalX()+"============");
                 return true;
             case MotionEvent.ACTION_UP:
-                int finalX=mScroller.getFinalX();
-                int a=finalX%xMargin;
-                if(a>0){
-                    int b=xMargin/2-a;
-                    if(b>0){
-                        mScroller.setFinalX(finalX-a);
-                    }if(b<0){
-                        mScroller.setFinalX(finalX+xMargin-a);
-                    }
-                }else{
-                    int b=xMargin/2+a;
-                    if(b>0){
-                        mScroller.setFinalX(finalX-a);
-                    }if(b<0){
-                        mScroller.setFinalX(finalX-(xMargin+a));
-                    }
-                }
+//                int finalX=mScroller.getFinalX();
+//                int a=finalX%xMargin;
+//                if(a>0){
+//                    int b=xMargin/2-a;
+//                    if(b>0){
+//                        mScroller.setFinalX(finalX-a);
+//                    }if(b<0){
+//                        mScroller.setFinalX(finalX+xMargin-a);
+//                    }
+//                }else{
+//                    int b=xMargin/2+a;
+//                    if(b>0){
+//                        mScroller.setFinalX(finalX-a);
+//                    }if(b<0){
+//                        mScroller.setFinalX(finalX-(xMargin+a));
+//                    }
+//                }
 
+                velocityTracker.computeCurrentVelocity(1000);
+                mScroller.fling((int) mScroller.getCurrX(), 0, (int) velocityTracker.getXVelocity(), 0, 0, 99999999, 0, 0);
+                velocityTracker.recycle();
+                velocityTracker = null;
                 postInvalidate();
                 return true;
         }
-
-
         return super.onTouchEvent(event);
     }
 
