@@ -61,6 +61,8 @@ public class MyView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         paint.setAntiAlias(true);
+
+
         paint.setStrokeWidth(4);
         paint.setColor(ContextCompat.getColor(context, R.color.grey));
         //y轴
