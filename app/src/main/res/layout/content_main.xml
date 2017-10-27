@@ -112,5 +112,10 @@
             android:progress="90"
             app:progress_reached_bar_height="15dp"
             app:radius="75dp" />
+        <Button
+            android:id="@+id/btn_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SeatCheck" />
     </LinearLayout>
 </ScrollView>

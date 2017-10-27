@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".activity.PathActivity" />
         <activity android:name=".activity.Path2Activity" />
-        <activity android:name=".activity.MyViewActivity"></activity>
+        <activity android:name=".activity.MyViewActivity" />
+        <activity android:name=".activity.ZoomImageActivity"></activity>
     </application>
 
 </manifest>
